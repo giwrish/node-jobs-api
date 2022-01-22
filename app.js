@@ -5,9 +5,18 @@ const express = require("express");
 const dbConnect = require("./database/connection");
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("<h1>JOBS API</h1>");
-});
+const notFoundHandler = require("./middleware/notFoundHandler");
+const errorHandler = require("./middleware/errorHandler");
+const authRouter = require("./routes/auth");
+const jobsRouter = require("./routes/jobs");
+
+app.use(express.json());
+
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/jobs", jobsRouter);
+
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 

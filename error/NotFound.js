@@ -2,8 +2,9 @@ const { StatusCodes } = require("http-status-codes");
 const APIError = require("./APIError");
 
 class NotFound extends APIError {
-  constructor(message) {
-    super(message);
+  constructor() {
+    super();
+    this.message = "Resource Not Found";
     this.statusCode = StatusCodes.NOT_FOUND;
   }
 }
