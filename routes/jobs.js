@@ -8,6 +8,6 @@ const {
 } = require("../controllers/jobs");
 
 router.route("/").get(getJobs).post(createJob);
-router.route("/:id").get(getJob).patch(updateJob).delete(deleteJob);
+router.route("/:jobId").get(getJob).patch(updateJob).delete(deleteJob);
 
 module.exports = router;
